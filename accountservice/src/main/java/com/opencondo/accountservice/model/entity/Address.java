@@ -3,6 +3,8 @@ package com.opencondo.accountservice.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Put a description of the class here.
  *
@@ -12,9 +14,14 @@ import lombok.Setter;
 @Setter
 public class Address {
 
+    @NotNull(message = "Must know if this address belong to a house or not")
     private boolean house;
+
     private String street;
+
+    @NotNull(message = "House or Apt number can not be null")
     private Integer number;
+
     private Integer floor;
 
     @Override
