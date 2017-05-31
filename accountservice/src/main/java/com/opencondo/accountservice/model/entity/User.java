@@ -6,6 +6,8 @@ import org.springframework.data.annotation.Id;
 
 /**
  * Represents a unique user in the system.
+ *
+ * @author Olavo Holanda
  */
 @Getter
 @Setter
@@ -18,17 +20,8 @@ public class User {
     private String username;
     private String password;
     private String condoId;
-    private String role;
-
-    public User() {}
-
-    public User(String name, String email,
-                String username, String password) {
-        this.name = name;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-    }
+    private Role role;
+    private Address address;
 
     @Override
     public String toString() {
