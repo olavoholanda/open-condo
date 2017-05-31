@@ -12,14 +12,14 @@ import lombok.Setter;
 @Setter
 public class Address {
 
-    private Boolean house;
+    private boolean house;
     private String street;
     private Integer number;
     private Integer floor;
 
     @Override
     public String toString() {
-        if(this.house){
+        if(this.isHouse()){
             return String.format("Address[street=%s, number='%s']",
                     street, number);
         } else {
