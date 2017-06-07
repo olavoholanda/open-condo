@@ -5,6 +5,7 @@ import com.opencondo.accountservice.model.storage.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -41,5 +42,10 @@ public class UserController {
             return opUser.get();
         }
         return null;
+    }
+
+    @RequestMapping(value = "/all", method=RequestMethod.GET)
+    public List<User> getAllUsers() {
+        return repository.findAll();
     }
 }

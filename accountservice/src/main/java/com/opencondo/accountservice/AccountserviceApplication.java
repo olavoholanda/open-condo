@@ -1,6 +1,8 @@
 package com.opencondo.accountservice;
 
 import com.opencondo.accountservice.model.entity.CustomUserDetails;
+import com.opencondo.accountservice.model.entity.Role;
+import com.opencondo.accountservice.model.entity.User;
 import com.opencondo.accountservice.model.storage.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +19,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  */
 @SpringBootApplication
 public class AccountserviceApplication {
+
+	@Autowired
+	UserRepository repository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AccountserviceApplication.class, args);

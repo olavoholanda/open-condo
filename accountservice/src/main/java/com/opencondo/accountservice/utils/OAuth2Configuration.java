@@ -20,7 +20,6 @@ import java.util.List;
  */
 @Configuration
 @EnableAuthorizationServer
-@SuppressWarnings("")
 public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
@@ -47,10 +46,6 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        List<UserDetails> userDetailsList = new ArrayList<>();
-//        userDetailsList.add(new User("user","user", Lists.newArrayList(new SimpleGrantedAuthority("READ"))));
-//        userDetailsList.add(new User("admin","admin",new ArrayList<new SimpleGrantedAuthority("READ"),new SimpleGrantedAuthority("WRITE"))));
-
         endpoints.authenticationManager(authenticationManager);
     }
 }
