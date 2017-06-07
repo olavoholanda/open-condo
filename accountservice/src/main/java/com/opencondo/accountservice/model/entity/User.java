@@ -35,6 +35,8 @@ public class User {
 
     private Address address;
 
+    private boolean enable = true;
+
     @Override
     public String toString() {
         return String.format(
