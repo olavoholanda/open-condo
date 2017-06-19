@@ -35,8 +35,7 @@ public class UserAccount {
 
   private String avatarURL;
 
-  public UserAccount() {
-  }
+  protected UserAccount() {}
 
   public UserAccount(String externalId, String name, String avatarURL) {
     this.externalId = externalId;

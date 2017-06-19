@@ -45,8 +45,7 @@ public class Message {
   @Column(nullable = false)
   private UserAccount author;
 
-  public Message() {
-  }
+  protected Message() {}
 
   public Message(String message, Date createTime) {
     this.message = message;

@@ -48,8 +48,7 @@ public class Topic {
   @Column(nullable = false)
   private UserAccount author;
 
-  public Topic(){
-  }
+  protected Topic(){}
 
   public Topic(String title, Date createTime){
     this.title = title;
