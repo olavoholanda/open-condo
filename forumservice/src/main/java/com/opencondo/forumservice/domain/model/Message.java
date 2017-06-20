@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,7 +43,7 @@ public class Message {
   @ManyToOne
   private Topic topic;
 
-  @Column(nullable = false)
+  @ManyToOne
   private UserAccount author;
 
   /**

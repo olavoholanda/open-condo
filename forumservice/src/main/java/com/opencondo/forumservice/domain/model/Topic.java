@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,7 +46,7 @@ public class Topic {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic")
   private List<Message> messages = new ArrayList<>();
 
-  @Column(nullable = false)
+  @ManyToOne
   private UserAccount author;
 
   /**
