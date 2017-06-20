@@ -15,9 +15,9 @@ import lombok.Setter;
  * board, that is, a forum. A message will hold information about its
  * content, time of creation, author and if it was modified or not.
  *
- * @author      Olavo Holanda
- * @version     0.1
- * @since       0.1
+ * @author Olavo Holanda
+ * @version 0.1
+ * @since 0.1
  */
 @Getter
 @Setter
@@ -45,12 +45,28 @@ public class Message {
   @Column(nullable = false)
   private UserAccount author;
 
-  protected Message() {}
+  /**
+   * Protected constructor, please use the one with parameters, that are required
+   * for this object.
+   */
+  protected Message() {
+  }
 
-  public Message(String message, Date createTime) {
+  /**
+   * <code>Message</code> constructor, creates a new message instance with the
+   * mandatory parameters.
+   *
+   * @param message the <code>String</code> holding the message's content
+   * @param createTime the <code>Date</code> of creation
+   * @param topic the <code>Topic</code> acting as container of this message
+   * @param author the <code>UserAccount</code> of the message's author
+   */
+  public Message(String message, Date createTime, Topic topic, UserAccount author) {
     this.message = message;
     this.createTime = createTime;
     this.modified = Boolean.FALSE;
+    this.author = author;
+    this.topic = topic;
   }
 
   @Override

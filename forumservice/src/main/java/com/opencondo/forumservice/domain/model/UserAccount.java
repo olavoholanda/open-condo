@@ -15,9 +15,9 @@ import lombok.Setter;
  * externalId property. An UserAccount holds information about its externalId,
  * name and avatarURL.
  *
- * @author      Olavo Holanda
- * @version     0.1
- * @since       0.1
+ * @author Olavo Holanda
+ * @version 0.1
+ * @since 0.1
  */
 @Getter
 @Setter
@@ -35,8 +35,21 @@ public class UserAccount {
 
   private String avatarURL;
 
-  protected UserAccount() {}
+  /**
+   * Protected constructor, please use the one with parameters, that are required
+   * for this object.
+   */
+  protected UserAccount() {
+  }
 
+  /**
+   * <code>UserAccount</code> constructor, creates a new user account instance with
+   * the mandatory parameters.
+   *
+   * @param externalId the <code>String</code> representing the user's external id
+   * @param name the <code>String</code> with the user's full name
+   * @param avatarURL the <code>String</code> holding the user's avatar URL
+   */
   public UserAccount(String externalId, String name, String avatarURL) {
     this.externalId = externalId;
     this.name = name;
