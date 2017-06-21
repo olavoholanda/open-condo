@@ -18,11 +18,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
   /**
-   * Returns a <code>List</code> of <code>Messages</code> regarding a specific
+   * Searches a <code>List</code> of <code>Messages</code> regarding a specific
    * <code>Topic</code>, ordered by a Pageable object
    *
    * @param topicId the long representing the topic id
    * @param pageable the <code>Pageable</code> with pagination and sort information
+   *
+   * @return a list of messages
    */
   List<Message> findByTopicId(Long topicId, Pageable pageable);
 }
