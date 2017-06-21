@@ -46,7 +46,6 @@ public class MessageRepositoryTest {
     //creates an user, that will be the author
     String externalId = "messageSampleTesteId1";
     String name = "John Doe";
-    String avatarUrl = "/avatar/messageSampleTesteId1.png";
     UserAccount author = new UserAccount(externalId, name);
     author = this.entityManager.persist(author);
     this.entityManager.flush();

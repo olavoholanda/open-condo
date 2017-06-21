@@ -43,7 +43,6 @@ public class TopicRepositoryTest {
     //creates an user, that will be the author
     String externalId = "sampleTestId1";
     String name = "John Doe";
-    String avatarUrl = "/avatar/sampleTestId1.png";
     UserAccount author = new UserAccount(externalId, name);
     author = this.entityManager.persist(author);
     this.entityManager.flush();
