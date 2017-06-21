@@ -10,16 +10,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * should be used in the service layer for create, retrieve, update and delete operations
  * on topics.
  *
- * @author      Olavo Holanda
- * @version     0.1
- * @since       0.1
+ * @author Olavo Holanda
+ * @version 0.1
+ * @since 0.1
  */
 public interface TopicRepository extends JpaRepository<Topic, Long> {
 
   /**
    * Returns a <code>List</code> of <code>Topics</code>, ordered
    * by their creation time. There is no limit here, use it carefully.
-   *
    */
   List<Topic> findAllByOrderByCreateTimeDesc();
 }

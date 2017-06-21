@@ -11,9 +11,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * should be used in the service layer for create, retrieve, update and delete operations
  * on messages.
  *
- * @author      Olavo Holanda
- * @version     0.1
- * @since       0.1
+ * @author Olavo Holanda
+ * @version 0.1
+ * @since 0.1
  */
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
