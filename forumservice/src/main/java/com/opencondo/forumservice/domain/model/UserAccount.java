@@ -38,8 +38,6 @@ public class UserAccount {
   @Column(nullable = false, length = 100)
   private String name;
 
-  private String avatarURL;
-
   @OneToMany(mappedBy = "author")
   private List<Message> messages = new ArrayList<>();
 
@@ -59,11 +57,9 @@ public class UserAccount {
    *
    * @param externalId the <code>String</code> representing the user's external id
    * @param name the <code>String</code> with the user's full name
-   * @param avatarURL the <code>String</code> holding the user's avatar URL
    */
-  public UserAccount(String externalId, String name, String avatarURL) {
+  public UserAccount(String externalId, String name) {
     this.externalId = externalId;
     this.name = name;
-    this.avatarURL = avatarURL;
   }
 }

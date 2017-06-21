@@ -39,10 +39,8 @@ public class UserAccountRepositoryTest {
   public void testFindByExternalId() throws Exception {
     String externalId = "sampleTestId1";
     String name = "John Doe";
-    String avatarUrl = "/avatar/sampleTestId1.png";
-    this.entityManager.persist(new UserAccount(externalId, name, avatarUrl));
+    this.entityManager.persist(new UserAccount(externalId, name));
     UserAccount user = this.repository.findByExternalId(externalId);
     assertThat(user.getName()).isEqualTo(name);
-    assertThat(user.getAvatarURL()).isEqualTo(avatarUrl);
   }
 }
