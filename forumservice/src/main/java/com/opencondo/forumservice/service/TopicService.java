@@ -23,12 +23,12 @@ public class TopicService {
 
   private final TopicRepository repository;
 
-  private final UserAccountService userAccountService;
+  private final UserAccountQueryService accountQueryService;
 
   @Autowired
-  public TopicService(TopicRepository repository, UserAccountService userAccountService) {
+  public TopicService(TopicRepository repository, UserAccountQueryService accountQueryService) {
     this.repository = repository;
-    this.userAccountService = userAccountService;
+    this.accountQueryService = accountQueryService;
   }
 
   /**
@@ -41,7 +41,7 @@ public class TopicService {
    * @return a new, persisted, topic.
    */
   public Topic createTopic(String title, String userExternalId) {
-    UserAccount author = userAccountService.getUserByExternalId(userExternalId);
+    UserAccount author = accountQueryService.getUserByExternalId(userExternalId);
 
     Topic topic = new Topic(title, new Date(), author);
     return repository.save(topic);

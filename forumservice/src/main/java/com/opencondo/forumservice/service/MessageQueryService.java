@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * The <code>MessageQueryService</code> class is responsible for query methods regarding
- * messages. For CRUD operation look for <code>MessageService</code>.
+ * messages. For CRUD operations look for <code>MessageService</code>.
  *
  * @author Olavo Holanda
  * @version 0.1

@@ -24,15 +24,15 @@ public class MessageService {
 
   private final MessageRepository repository;
 
-  private final UserAccountService userAccountService;
+  private final UserAccountQueryService accountQueryService;
 
   private final TopicService topicService;
 
   @Autowired
-  public MessageService(MessageRepository repository, UserAccountService userAccountService,
+  public MessageService(MessageRepository repository, UserAccountQueryService accountQueryService,
       TopicService topicService) {
     this.repository = repository;
-    this.userAccountService = userAccountService;
+    this.accountQueryService = accountQueryService;
     this.topicService = topicService;
   }
 
@@ -47,8 +47,8 @@ public class MessageService {
    */
   public Message createMessage(String messageContent, Long topicId, String userExternalId) {
 
-    UserAccount author = userAccountService.getUserByExternalId(userExternalId);
-    Topic topic = topicService.getTopicById(topicId);
+    UserAccount author = accountQueryService.getUserByExternalId(userExternalId);
+    Topic topic = topicService.retrieveTopic(topicId);
 
     Message message = new Message(messageContent, new Date(), topic, author);
     return repository.save(message);
