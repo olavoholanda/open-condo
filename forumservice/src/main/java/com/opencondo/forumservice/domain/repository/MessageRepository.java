@@ -2,6 +2,7 @@ package com.opencondo.forumservice.domain.repository;
 
 import com.opencondo.forumservice.domain.model.Message;
 import java.util.List;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -18,10 +19,10 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
 
   /**
    * Returns a <code>List</code> of <code>Messages</code> regarding a specific
-   * <code>Topic</code>, ordered by their creation time. There is no limit here,
-   * use it carefully.
+   * <code>Topic</code>, ordered by a Pageable object
    *
    * @param topicId the long representing the topic id
+   * @param pageable the <code>Pageable</code> with pagination and sort information
    */
-  List<Message> findByTopicIdOrderByCreateTimeAsc(Long topicId);
+  List<Message> findByTopicId(Long topicId, Pageable pageable);
 }
