@@ -13,6 +13,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -62,7 +64,7 @@ public class MessageRepositoryTest {
     this.entityManager.flush();
 
     //gets the messages in order by creation time
-    List<Message> messages = this.repository.findByTopicIdOrderByCreateTimeAsc(topic.getId());
+    List<Message> messages = this.repository.findByTopicId(topic.getId(), PageRequest.of(0,10, Sort.Direction.ASC,"createTime"));
 
     //asserts
     assertThat(messages.get(0).getMessage()).isEqualTo("message content 1");
