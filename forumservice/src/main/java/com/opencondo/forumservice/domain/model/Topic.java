@@ -39,6 +39,12 @@ public class Topic {
   @Column(nullable = false)
   private Date createTime;
 
+  @Column
+  private Date updateTime;
+
+  @Column(nullable = false)
+  private boolean modified;
+
   @Column(nullable = false)
   private boolean open;
 
@@ -67,6 +73,7 @@ public class Topic {
     this.title = title;
     this.createTime = createTime;
     this.open = Boolean.TRUE;
+    this.modified = Boolean.FALSE;
     this.author = author;
   }
 }
