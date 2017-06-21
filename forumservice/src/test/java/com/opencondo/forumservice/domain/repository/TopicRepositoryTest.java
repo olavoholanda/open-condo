@@ -44,7 +44,7 @@ public class TopicRepositoryTest {
     String externalId = "sampleTestId1";
     String name = "John Doe";
     String avatarUrl = "/avatar/sampleTestId1.png";
-    UserAccount author = new UserAccount(externalId, name, avatarUrl);
+    UserAccount author = new UserAccount(externalId, name);
     author = this.entityManager.persist(author);
     this.entityManager.flush();
 
