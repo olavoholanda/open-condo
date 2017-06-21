@@ -23,7 +23,6 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
    *
    * @param topicId the long representing the topic id
    * @param pageable the <code>Pageable</code> with pagination and sort information
-   *
    * @return a list of messages
    */
   List<Message> findByTopicId(Long topicId, Pageable pageable);
