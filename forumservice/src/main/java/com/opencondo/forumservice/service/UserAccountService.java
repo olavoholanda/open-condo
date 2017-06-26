@@ -69,11 +69,11 @@ public class UserAccountService {
   }
 
   /**
-   * Deletes the desired <code>UserAccount</code> having the passed external id.
+   * Deletes the desired <code>UserAccount</code> having the external id.
    *
    * @param externalId the user <code>String</code> external id.
    */
-  public void deleteTopic(String externalId) {
+  public void deleteUser(String externalId) {
     UserAccount userAccount = queryService.getUserByExternalId(externalId);
     repository.delete(userAccount);
   }
