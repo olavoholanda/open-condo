@@ -8,9 +8,11 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /**
- * Put a description of the class here.
+ * Cross Origin Resource Sharing filter, enables all domains for every method.
  *
- * @author: Olavo Holanda
+ * @author Olavo Holanda
+ * @version 0.1
+ * @since 0.1
  */
 @Configuration
 public class CORSConfig {
