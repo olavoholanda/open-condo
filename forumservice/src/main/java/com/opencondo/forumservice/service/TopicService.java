@@ -78,16 +78,29 @@ public class TopicService {
   }
 
   /**
-   * Updates the desired <code>Topic</code> having the passed id
-   * with the new status, open or closed.
+   * Updates the desired <code>Topic</code> to a closed
+   * status.
    *
    * @param id the message <code>Long</code> id.
-   * @param status the <code>Boolean</code> status of the topic, open or closed.
    * @return the updated desired topic.
    */
-  public Topic updateTopicStatus(Long id, Boolean status) {
+  public Topic closeTopic(Long id) {
     Topic topic = this.retrieveTopic(id);
-    topic.setOpen(status);
+    topic.setOpen(Boolean.FALSE);
+
+    return repository.save(topic);
+  }
+
+  /**
+   * Updates the desired <code>Topic</code> to a open
+   * status.
+   *
+   * @param id the message <code>Long</code> id.
+   * @return the updated desired topic.
+   */
+  public Topic openTopic(Long id) {
+    Topic topic = this.retrieveTopic(id);
+    topic.setOpen(Boolean.TRUE);
 
     return repository.save(topic);
   }
