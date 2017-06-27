@@ -38,12 +38,13 @@ public class TopicService {
    *
    * @param title the <code>String</code> with topic's title.
    * @param userExternalId the <code>String</code> external id of the author.
+   * @param condoId the <code>String</code> condo id of the topic.
    * @return a new, persisted, topic.
    */
-  public Topic createTopic(String title, String userExternalId) {
+  public Topic createTopic(String title, String userExternalId, String condoId) {
     UserAccount author = accountQueryService.getUserByExternalId(userExternalId);
 
-    Topic topic = new Topic(title, new Date(), author);
+    Topic topic = new Topic(title, new Date(), author, condoId);
     return repository.save(topic);
   }
 

@@ -54,6 +54,9 @@ public class Topic {
   @ManyToOne
   private UserAccount author;
 
+  @Column(nullable = false)
+  private String condoId;
+
   /**
    * Protected constructor, please use the one with parameters, that are required
    * for this object.
@@ -69,11 +72,12 @@ public class Topic {
    * @param createTime the <code>Date</code> of creation
    * @param author the <code>UserAccount</code> of the topic's author
    */
-  public Topic(String title, Date createTime, UserAccount author) {
+  public Topic(String title, Date createTime, UserAccount author, String condoId) {
     this.title = title;
     this.createTime = createTime;
     this.open = Boolean.TRUE;
     this.modified = Boolean.FALSE;
     this.author = author;
+    this.condoId = condoId;
   }
 }

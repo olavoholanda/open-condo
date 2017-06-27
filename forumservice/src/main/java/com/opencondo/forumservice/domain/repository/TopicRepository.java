@@ -3,6 +3,7 @@ package com.opencondo.forumservice.domain.repository;
 import com.opencondo.forumservice.domain.model.Topic;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Pageable;
 
 /**
  * The <code>TopicRepository</code> interface extends Spring <code>JpaRepository</code
@@ -17,8 +18,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TopicRepository extends JpaRepository<Topic, Long> {
 
   /**
-   * Returns a <code>List</code> of <code>Topics</code>, ordered
-   * by their creation time. There is no limit here, use it carefully.
+   * Searches a <code>List</code> of <code>Topics</code> regarding a specific
+   * condominium id, ordered by a Pageable object
+   *
+   * @param condoId the String representing the condominium id
+   * @param pageable the <code>Pageable</code> with pagination and sort information
+   * @return a list of topics
    */
-  List<Topic> findAllByOrderByCreateTimeDesc();
+  List<Topic> findByCondoId(String condoId, Pageable pageable);
 }

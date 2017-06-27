@@ -52,7 +52,8 @@ public class MessageRepositoryTest {
 
     //creates a topic, that will contain the messages
     String title = "topic title";
-    Topic topic = new Topic(title, new Date(), author);
+    String condoId = "condo1";
+    Topic topic = new Topic(title, new Date(), author, condoId);
     topic = this.entityManager.persist(topic);
     this.entityManager.flush();
 

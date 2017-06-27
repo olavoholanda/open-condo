@@ -36,9 +36,7 @@ public class MessageQueryService {
    * @return a list of messages, sorted by creation time.
    */
   public List<Message> getLastMessagesByTopicId(Long topicId, Integer page, Integer size) {
-    List<Message> messages = repository.
+    return repository.
         findByTopicId(topicId, PageRequest.of(page, size, Sort.Direction.ASC, "createTime"));
-
-    return messages;
   }
 }

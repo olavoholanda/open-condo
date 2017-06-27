@@ -12,6 +12,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -43,18 +45,20 @@ public class TopicRepositoryTest {
     //creates an user, that will be the author
     String externalId = "sampleTestId1";
     String name = "John Doe";
+    String condoId = "condo1";
     UserAccount author = new UserAccount(externalId, name);
     author = this.entityManager.persist(author);
     this.entityManager.flush();
 
     //persists 3 topics, from the oldest to the newest
-    this.entityManager.persist(new Topic("post title 1", new Date(1497069005256L), author));
-    this.entityManager.persist(new Topic("post title 2", new Date(1497569005256L), author));
-    this.entityManager.persist(new Topic("post title 3", new Date(1497969005256L), author));
+    this.entityManager.persist(new Topic("post title 1", new Date(1497069005256L), author, condoId));
+    this.entityManager.persist(new Topic("post title 2", new Date(1497569005256L), author, condoId));
+    this.entityManager.persist(new Topic("post title 3", new Date(1497969005256L), author, condoId));
     this.entityManager.flush();
 
     //gets the topics in order by creation time
-    List<Topic> topics = this.repository.findAllByOrderByCreateTimeDesc();
+    List<Topic> topics = this.repository.findByCondoId(condoId, PageRequest
+        .of(0,10, Sort.Direction.ASC,"createTime"));
 
     //asserts
     assertThat(topics.get(0).getTitle()).isEqualTo("post title 3");
