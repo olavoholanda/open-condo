@@ -19,6 +19,7 @@ public class TopicDTO implements DTOMapper<Topic> {
   private Date createTime;
   private boolean open;
   private UserDTO author;
+  private String condoId;
 
   @Override
   public String toString() {
@@ -40,6 +41,7 @@ public class TopicDTO implements DTOMapper<Topic> {
     this.open = topic.isOpen();
 
     this.author = new UserDTO();
+    this.condoId = topic.getCondoId();
     this.author.buildFromEntity(topic.getAuthor());
   }
 }
