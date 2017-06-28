@@ -10,7 +10,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 /**
  * Spring security configuration class. In this class is every configuration for credentials and
  * authorization for http requests. For now, is authorizing all requests.
- * TODO: JWT authentication
  *
  * @author Olavo Holanda
  * @version 0.1
@@ -23,8 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable().authorizeRequests()
-        .anyRequest().permitAll()
         .antMatchers("/api/**").authenticated()
+        .anyRequest().permitAll()
         .and()
         // filter all requests to check the presence of JWT in header
         .addFilterBefore(new JWTAuthenticationFilter(),
