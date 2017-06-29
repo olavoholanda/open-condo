@@ -1,7 +1,7 @@
 package com.opencondo.accountservice;
 
 import com.opencondo.accountservice.domain.storage.UserRepository;
-import com.opencondo.accountservice.security.CustomUserDetails;
+import com.opencondo.accountservice.security.ImmutableUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,6 +27,6 @@ public class AccountserviceApplication {
   @Autowired
   public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository repo)
       throws Exception {
-    builder.userDetailsService(s -> (new CustomUserDetails(repo.findByUsername(s))));
+    builder.userDetailsService(s -> (new ImmutableUserDetails(repo.findByUsername(s))));
   }
 }
