@@ -16,11 +16,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
 
   /**
-   * Searches an <code>UserAccount</code> by its external identification. Remember
-   * that the global project uses a micro service architecture, so, this external id is
-   * the real id of the User, managed by the account micro service.
+   * Searches an <code>UserAccount</code> by its username.
    *
-   * @param externalId the String representing the user external id
+   * @param username the String representing the username
    */
-  UserAccount findByExternalId(String externalId);
+  UserAccount findByUsername(String username);
 }

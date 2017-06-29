@@ -36,7 +36,7 @@ class TokenAuthenticationService {
           .setSigningKey(SECRET)
           .parseClaimsJws(token.replace(TOKEN_PREFIX, "")).getBody();
 
-      String userId = (String) claims.get("userId");
+      String userId = (String) claims.get("username");
       String role = (String) claims.get("role");
 
       if (userId != null && role != null) {

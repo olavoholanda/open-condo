@@ -37,10 +37,10 @@ public class UserAccountRepositoryTest {
 
   @Test
   public void testFindByExternalId() throws Exception {
-    String externalId = "sampleTestId1";
+    String username = "sampleTestId1";
     String name = "John Doe";
-    this.entityManager.persist(new UserAccount(externalId, name));
-    UserAccount user = this.repository.findByExternalId(externalId);
+    this.entityManager.persist(new UserAccount(username, name));
+    UserAccount user = this.repository.findByUsername(username);
     assertThat(user.getName()).isEqualTo(name);
   }
 }

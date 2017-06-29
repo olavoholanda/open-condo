@@ -50,7 +50,7 @@ public class MessageService {
    */
   public Message createMessage(String messageContent, Long topicId, String userExternalId) {
 
-    UserAccount author = accountQueryService.getUserByExternalId(userExternalId);
+    UserAccount author = accountQueryService.getUserByUsername(userExternalId);
     Topic topic = topicService.retrieveTopic(topicId);
 
     Message message = new Message(messageContent, new Date(), topic, author);

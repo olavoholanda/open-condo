@@ -38,49 +38,47 @@ public class UserAccountController {
   /**
    * Creates a new user.
    *
-   * @param dto an <code>UserDTO</code> with user external id and name.
+   * @param dto an <code>UserDTO</code> with username and name.
    * @return the created user.
    */
   @RequestMapping(method = RequestMethod.POST)
   public UserDTO createUser(@RequestBody UserDTO dto) {
-    UserAccount account = this.service.createUser(dto.getId(), dto.getName());
+    UserAccount account = this.service.createUser(dto.getUsername(), dto.getName());
     return this.parseUser(account);
   }
 
   /**
    * Retrieves the desired user.
    *
-   * @param id the String external user id.
+   * @param username the String username.
    * @return the desired user.
    */
-  @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-  public UserDTO getUser(@PathVariable("id") String id) {
-    UserAccount account = this.queryService.getUserByExternalId(id);
+  @RequestMapping(path = "/{username}", method = RequestMethod.GET)
+  public UserDTO getUser(@PathVariable("username") String username) {
+    UserAccount account = this.queryService.getUserByUsername(username);
     return this.parseUser(account);
   }
 
   /**
    * Deletes the desired user.
    *
-   * @param id the String external user id.
-   * @return 200 if successful.
+   * @param username the String username.
    */
-  @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-  public ResponseEntity<?> deleteUser(@PathVariable("id") String id) {
-    this.service.deleteUser(id);
-    return ResponseEntity.ok().build();
+  @RequestMapping(path = "/{username}", method = RequestMethod.DELETE)
+  public void deleteUser(@PathVariable("username") String username) {
+    this.service.deleteUser(username);
   }
 
   /**
    * Updates the desired user.
    *
-   * @param dto an <code>UserDTO</code> with user external id and the new name.
+   * @param dto an <code>UserDTO</code> with username and the new name.
    * @return the user updated.
    */
   @RequestMapping(method = RequestMethod.PUT)
   public UserDTO updateUser(@RequestBody UserDTO dto) {
     UserAccount account = this.service
-        .updateUserAccountNameByExternalId(dto.getId(), dto.getName());
+        .updateUserAccountNameByExternalId(dto.getUsername(), dto.getName());
     return this.parseUser(account);
   }
 

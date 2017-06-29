@@ -36,17 +36,17 @@ public class UserAccountQueryServiceTest {
   @Test
   public void getUserByExternalId() throws Exception {
 
-    String externalId = "newUser1";
+    String username = "newUser1";
     String name = "New User";
 
-    UserAccount mocked = new UserAccount(externalId, name);
+    UserAccount mocked = new UserAccount(username, name);
     mocked.setId(1L);
 
-    given(this.repository.findByExternalId(externalId)).willReturn(mocked);
+    given(this.repository.findByUsername(username)).willReturn(mocked);
 
-    UserAccount accountResult = this.query.getUserByExternalId(externalId);
+    UserAccount accountResult = this.query.getUserByUsername(username);
 
-    assertEquals(externalId, accountResult.getExternalId());
+    assertEquals(username, accountResult.getUsername());
     assertEquals(name, accountResult.getName());
   }
 

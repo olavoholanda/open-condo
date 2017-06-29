@@ -27,12 +27,12 @@ public class UserAccountQueryService {
   }
 
   /**
-   * Searches for an <code>UserAccount</code> with the specific external id.
+   * Searches for an <code>UserAccount</code> with the specific username.
    *
-   * @param externalId the <code>String</code> external id of the user
-   * @return the desired user account
+   * @param username the <code>String</code> username.
+   * @return the desired user account.
    */
-  public UserAccount getUserByExternalId(String externalId) {
-    return this.repository.findByExternalId(externalId);
+  public UserAccount getUserByUsername(String username) {
+    return this.repository.findByUsername(username);
   }
 }

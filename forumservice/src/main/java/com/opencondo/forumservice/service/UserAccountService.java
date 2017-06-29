@@ -33,14 +33,15 @@ public class UserAccountService {
   }
 
   /**
-   * Creates a new <code>UserAccount</code> based on the external id and name.
+   * Creates a new <code>UserAccount</code> based on the username and name.
+   * TODO: Check if there is already an user with that username.
    *
-   * @param externalId the <code>String</code> external id of the user.
+   * @param username the <code>String</code> with the username.
    * @param name the <code>String</code> name of the user.
    * @return a new, persisted, user account.
    */
-  public UserAccount createUser(String externalId, String name) {
-    UserAccount user = new UserAccount(externalId, name);
+  public UserAccount createUser(String username, String name) {
+    UserAccount user = new UserAccount(username, name);
     return repository.save(user);
   }
 
@@ -50,34 +51,34 @@ public class UserAccountService {
    * @param id the user account <code>Long</code> id.
    * @return the desired user account.
    */
-  public UserAccount retrieveUser(Long id) {
+  UserAccount retrieveUser(Long id) {
     Optional<UserAccount> optionalTopic = repository.findById(id);
     //TODO: throw new exception for not found and remove this null
     return optionalTopic.orElse(null);
   }
 
   /**
-   * Updates the desired <code>UserAccount</code> having the passed external id
+   * Updates the desired <code>UserAccount</code> having the username
    * with the new name.
    *
-   * @param externalId the <code>String</code> external id of the user.
+   * @param username the <code>String</code> username.
    * @param newName the <code>String</code> new name of the user.
    * @return the updated desired user account.
    */
-  public UserAccount updateUserAccountNameByExternalId(String externalId, String newName) {
-    UserAccount user = queryService.getUserByExternalId(externalId);
+  public UserAccount updateUserAccountNameByExternalId(String username, String newName) {
+    UserAccount user = queryService.getUserByUsername(username);
     user.setName(newName);
 
     return repository.save(user);
   }
 
   /**
-   * Deletes the desired <code>UserAccount</code> having the external id.
+   * Deletes the desired <code>UserAccount</code> having the username.
    *
-   * @param externalId the user <code>String</code> external id.
+   * @param username the user <code>String</code> username.
    */
-  public void deleteUser(String externalId) {
-    UserAccount userAccount = queryService.getUserByExternalId(externalId);
+  public void deleteUser(String username) {
+    UserAccount userAccount = queryService.getUserByUsername(username);
     repository.delete(userAccount);
   }
 }

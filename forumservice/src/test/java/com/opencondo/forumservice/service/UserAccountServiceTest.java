@@ -7,7 +7,6 @@ import static org.mockito.BDDMockito.given;
 import com.opencondo.forumservice.ForumserviceApplication;
 import com.opencondo.forumservice.domain.model.UserAccount;
 import com.opencondo.forumservice.domain.repository.UserAccountRepository;
-import com.opencondo.forumservice.utils.SwaggerConfig;
 import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,52 +42,52 @@ public class UserAccountServiceTest {
   @Test
   public void createUser() throws Exception {
 
-    String externalId = "newUser1";
+    String username = "newUser1";
     String name = "New User";
 
-    UserAccount mocked = new UserAccount(externalId, name);
+    UserAccount mocked = new UserAccount(username, name);
     mocked.setId(1L);
 
     given(this.repository.save(any())).willReturn(mocked);
 
-    UserAccount accountResult = this.service.createUser(externalId, name);
+    UserAccount accountResult = this.service.createUser(username, name);
 
-    assertEquals(externalId, accountResult.getExternalId());
+    assertEquals(username, accountResult.getUsername());
     assertEquals(name, accountResult.getName());
   }
 
   @Test
   public void retrieveUser() throws Exception {
-    String externalId = "newUser1";
+    String username = "newUser1";
     String name = "New User";
     Long id = 1L;
 
-    UserAccount mocked = new UserAccount(externalId, name);
+    UserAccount mocked = new UserAccount(username, name);
     mocked.setId(id);
 
     given(this.repository.findById(id)).willReturn(Optional.of(mocked));
 
     UserAccount accountResult = this.service.retrieveUser(id);
 
-    assertEquals(externalId, accountResult.getExternalId());
+    assertEquals(username, accountResult.getUsername());
     assertEquals(name, accountResult.getName());
   }
 
   @Test
   public void updateUserAccountNameByExternalId() throws Exception {
-    String externalId = "newUser1";
+    String username = "newUser1";
     String name = "New User Name";
     Long id = 1L;
 
-    UserAccount mocked = new UserAccount(externalId, name);
+    UserAccount mocked = new UserAccount(username, name);
     mocked.setId(id);
 
-    given(this.query.getUserByExternalId(externalId)).willReturn(mocked);
+    given(this.query.getUserByUsername(username)).willReturn(mocked);
     given(this.repository.save(any())).willReturn(mocked);
 
-    UserAccount accountResult = this.service.updateUserAccountNameByExternalId(externalId, name);
+    UserAccount accountResult = this.service.updateUserAccountNameByExternalId(username, name);
 
-    assertEquals(externalId, accountResult.getExternalId());
+    assertEquals(username, accountResult.getUsername());
     assertEquals(name, accountResult.getName());
   }
 }

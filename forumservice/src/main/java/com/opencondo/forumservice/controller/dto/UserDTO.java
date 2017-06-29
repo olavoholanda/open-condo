@@ -15,15 +15,15 @@ import lombok.Getter;
 @Getter
 public class UserDTO implements DTOMapper<UserAccount> {
 
-  private String id;
+  private Long id;
   private String name;
-  private Long internalId;
+  private String username;
 
   @Override
   public String toString() {
     return String.format(
-        "UserAccountDTO[id='%s', name='%s', internalId=%d]",
-        id, name, internalId);
+        "UserAccountDTO[id=%d, name='%s', username='%s']",
+        id, name, username);
   }
 
   /**
@@ -33,8 +33,8 @@ public class UserDTO implements DTOMapper<UserAccount> {
    */
   @Override
   public void buildFromEntity(UserAccount account) {
-    this.id = account.getExternalId();
+    this.id = account.getId();
     this.name = account.getName();
-    this.internalId = account.getId();
+    this.username = account.getUsername();
   }
 }

@@ -45,7 +45,7 @@ public class TopicService {
    * @return a new, persisted, topic.
    */
   public Topic createTopic(String title, String userExternalId, String condoId) {
-    UserAccount author = accountQueryService.getUserByExternalId(userExternalId);
+    UserAccount author = accountQueryService.getUserByUsername(userExternalId);
 
     Topic topic = new Topic(title, new Date(), author, condoId);
     return repository.save(topic);

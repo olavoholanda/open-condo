@@ -16,8 +16,8 @@ import lombok.Setter;
  * about an user account. As this service is not responsible for managing
  * accounts, therefore, the info hold by this class is pretty basic and
  * for further info about this user, check the account service using the
- * externalId property. An UserAccount holds information about its externalId,
- * name and avatarURL.
+ * username property. An UserAccount holds information about its username
+ * and name.
  *
  * @author Olavo Holanda
  * @version 0.1
@@ -33,7 +33,7 @@ public class UserAccount {
   private Long id;
 
   @Column(nullable = false)
-  private String externalId;
+  private String username;
 
   @Column(nullable = false, length = 100)
   private String name;
@@ -55,11 +55,11 @@ public class UserAccount {
    * <code>UserAccount</code> constructor, creates a new user account instance with
    * the mandatory parameters.
    *
-   * @param externalId the <code>String</code> representing the user's external id
-   * @param name the <code>String</code> with the user's full name
+   * @param username the <code>String</code> representing the username.
+   * @param name the <code>String</code> with the user's full name.
    */
-  public UserAccount(String externalId, String name) {
-    this.externalId = externalId;
+  public UserAccount(String username, String name) {
+    this.username = username;
     this.name = name;
   }
 }

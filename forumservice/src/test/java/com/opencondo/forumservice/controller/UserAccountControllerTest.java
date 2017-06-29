@@ -33,57 +33,57 @@ public class UserAccountControllerTest {
 
   @Test
   public void createUser() throws Exception {
-    String id = "user1";
+    String username = "user1";
     String name = "User 1";
     UserDTO dto = new UserDTO();
-    dto.buildFromEntity(new UserAccount(id, name));
+    dto.buildFromEntity(new UserAccount(username, name));
     UserDTO result = controller.createUser(dto);
 
-    assertEquals(id, result.getId());
+    assertEquals(username, result.getUsername());
     assertEquals(name, result.getName());
   }
 
   @Test
   public void getUser() throws Exception {
-    String id = "user2";
+    String username = "user2";
     String name = "User 2";
     UserDTO dto = new UserDTO();
-    dto.buildFromEntity(new UserAccount(id, name));
+    dto.buildFromEntity(new UserAccount(username, name));
     controller.createUser(dto);
 
-    UserDTO result = controller.getUser(id);
+    UserDTO result = controller.getUser(username);
 
-    assertEquals(id, result.getId());
+    assertEquals(username, result.getUsername());
     assertEquals(name, result.getName());
   }
 
   @Test(expected = NullPointerException.class)
   public void deleteUser() throws Exception {
-    String id = "user3";
+    String username = "user3";
     String name = "User 3";
     UserDTO dto = new UserDTO();
-    dto.buildFromEntity(new UserAccount(id, name));
+    dto.buildFromEntity(new UserAccount(username, name));
     controller.createUser(dto);
 
-    controller.deleteUser(id);
+    controller.deleteUser(username);
 
-    controller.getUser(id);
+    controller.getUser(username);
   }
 
   @Test
   public void updateUser() throws Exception {
-    String id = "user4";
+    String username = "user4";
     String name = "User 4";
     UserDTO dto = new UserDTO();
-    dto.buildFromEntity(new UserAccount(id, name));
+    dto.buildFromEntity(new UserAccount(username, name));
     controller.createUser(dto);
 
     name = "User New 4";
-    dto.buildFromEntity(new UserAccount(id, name));
+    dto.buildFromEntity(new UserAccount(username, name));
 
     UserDTO result = controller.updateUser(dto);
 
-    assertEquals(id, result.getId());
+    assertEquals(username, result.getUsername());
     assertEquals(name, result.getName());
   }
 
