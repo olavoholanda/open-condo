@@ -17,6 +17,9 @@ public class UserQueryServiceImpl implements UserQueryService {
 
   private final UserRepository repository;
 
+  /**
+   * Class constructor with AutoWired dependency injection.
+   */
   @Autowired
   public UserQueryServiceImpl(UserRepository repository) {
     this.repository = repository;
