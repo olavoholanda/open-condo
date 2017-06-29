@@ -19,6 +19,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+  /**
+   * Configures <code>HttpSecurity</code> to permit any request for anonymous users except
+   * the ones starting with '/api', these requests must be authenticated.
+   *
+   * @param http a <code>HttpSecurity</code> object.
+   */
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable().authorizeRequests()
@@ -30,6 +36,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             UsernamePasswordAuthenticationFilter.class);
   }
 
+  /**
+   * Configures <code>AuthenticationManagerBuilder</code> to be in memory authentication
+   * with a simple user 'admin'.
+   *
+   * @param auth an <code>AuthenticationManagerBuilder</code>.
+   */
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     // Create a default account

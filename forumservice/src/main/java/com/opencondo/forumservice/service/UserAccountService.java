@@ -23,6 +23,9 @@ public class UserAccountService {
 
   private final UserAccountQueryService queryService;
 
+  /**
+   * Class constructor with AutoWired dependencies injection.
+   */
   @Autowired
   public UserAccountService(UserAccountRepository repository, UserAccountQueryService queryService) {
     this.repository = repository;

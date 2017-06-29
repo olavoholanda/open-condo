@@ -17,6 +17,11 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class CORSConfig {
 
+  /**
+   * Enables CORS requests from any origin, for any method with any header.
+   *
+   * @return a new first priority filter with CORS enabled.
+   */
   @Bean
   public FilterRegistrationBean corsFilter() {
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

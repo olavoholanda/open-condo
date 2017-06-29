@@ -21,6 +21,9 @@ public class MessageQueryService {
 
   private final MessageRepository repository;
 
+  /**
+   * Class constructor with AutoWired dependency injection.
+   */
   @Autowired
   public MessageQueryService(MessageRepository repository) {
     this.repository = repository;

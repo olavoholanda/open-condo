@@ -28,6 +28,9 @@ public class MessageService {
 
   private final TopicService topicService;
 
+  /**
+   * Class constructor with AutoWired dependencies injection.
+   */
   @Autowired
   public MessageService(MessageRepository repository, UserAccountQueryService accountQueryService,
       TopicService topicService) {

@@ -21,6 +21,9 @@ public class TopicQueryService {
 
   private final TopicRepository repository;
 
+  /**
+   * Class constructor with AutoWired dependency injection.
+   */
   @Autowired
   public TopicQueryService(TopicRepository repository) {
     this.repository = repository;
