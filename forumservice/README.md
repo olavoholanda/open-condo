@@ -37,7 +37,7 @@ mvnw clean package
 And then run the application:
 
 ```
-java -jar target/xteam-warehouse-0.1.jar
+java -jar target/forumservice-0.1-SNAPSHOT.jar
 ```
 
 Logging output is displayed. You will see the Spring logo and within a few seconds
@@ -45,10 +45,10 @@ Logging output is displayed. You will see the Spring logo and within a few secon
 
 ### Checking the service
 
-With the server up in your local machine, you can test with the following url:
+With the server up in your local machine, you can test with the following url, default server port is 8081:
 
 ```
-http:localhost:8080/health
+http:localhost:8081/health
 ```
 
 The project uses Spring Actuator for default services methods, like health checks. If a prompt asks
