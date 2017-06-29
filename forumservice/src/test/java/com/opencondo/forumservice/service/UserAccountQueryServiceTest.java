@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * <code>UserAccountQueryService</code> test class. Tests the queries and custom 'find by' methods
@@ -22,6 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @since 0.1
  */
 @RunWith(SpringRunner.class)
+@WebAppConfiguration
 @ContextConfiguration(classes = ForumserviceApplication.class)
 public class UserAccountQueryServiceTest {
 

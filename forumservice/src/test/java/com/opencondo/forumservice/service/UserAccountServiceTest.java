@@ -7,6 +7,7 @@ import static org.mockito.BDDMockito.given;
 import com.opencondo.forumservice.ForumserviceApplication;
 import com.opencondo.forumservice.domain.model.UserAccount;
 import com.opencondo.forumservice.domain.repository.UserAccountRepository;
+import com.opencondo.forumservice.utils.SwaggerConfig;
 import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * <code>UserAccountService</code> test class. Tests the create, retrieve and update services
@@ -25,6 +27,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @since 0.1
  */
 @RunWith(SpringRunner.class)
+@WebAppConfiguration
 @ContextConfiguration(classes = ForumserviceApplication.class)
 public class UserAccountServiceTest {
 
