@@ -1,5 +1,6 @@
-package com.opencondo.accountservice.model.entity;
+package com.opencondo.accountservice.domain.model;
 
+import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -18,12 +19,14 @@ import javax.validation.constraints.NotNull;
 public class User {
 
     @Id
-    private String id;
+    private Long id;
 
     @NotNull(message = "Name can not be null")
     private String name;
 
     private String email;
+
+    private Date createTime;
 
     @NotNull(message = "Username can not be null")
     private String username;
@@ -36,7 +39,7 @@ public class User {
     @NotNull(message = "Role can not be null")
     private Role role;
 
-    private Address address;
+    private String address;
 
     private boolean enable = true;
 

@@ -1,4 +1,4 @@
-package com.opencondo.accountservice.model.entity;
+package com.opencondo.accountservice.domain.model;
 
 /**
  * Enum containing all user possible roles.
