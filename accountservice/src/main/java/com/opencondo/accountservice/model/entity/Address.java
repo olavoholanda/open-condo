@@ -6,9 +6,11 @@ import lombok.Setter;
 import javax.validation.constraints.NotNull;
 
 /**
- * Put a description of the class here.
+ * An user address.
  *
- * @author: olavo
+ * @author Olavo Holanda
+ * @version 0.1
+ * @since 0.1
  */
 @Getter
 @Setter

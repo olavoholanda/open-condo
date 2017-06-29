@@ -7,9 +7,11 @@ import org.springframework.data.annotation.Id;
 import javax.validation.constraints.NotNull;
 
 /**
- * Represents a unique user in the system.
+ * Represents an unique user in the system.
  *
  * @author Olavo Holanda
+ * @version 0.1
+ * @since 0.1
  */
 @Getter
 @Setter
@@ -31,6 +33,7 @@ public class User {
 
     private String condoId;
 
+    @NotNull(message = "Role can not be null")
     private Role role;
 
     private Address address;

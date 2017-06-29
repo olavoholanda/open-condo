@@ -1,10 +1,13 @@
 package com.opencondo.accountservice.model.entity;
 
 /**
- * Put a description of the class here.
+ * Enum containing all user possible roles.
  *
- * @author: olavo
+ * @author Olavo Holanda
+ * @version 0.1
+ * @since 0.1
  */
 public enum Role {
-    MANAGER, RESIDENT
+    ROLE_MANAGER, ROLE_RESIDENT,
+    ROLE_ADMIN, ROLE_DOORMAN
 }
