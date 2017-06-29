@@ -1,34 +1,32 @@
 package com.opencondo.accountservice;
 
-import com.opencondo.accountservice.model.entity.CustomUserDetails;
-import com.opencondo.accountservice.model.entity.Role;
-import com.opencondo.accountservice.model.entity.User;
-import com.opencondo.accountservice.model.storage.UserRepository;
+import com.opencondo.accountservice.domain.storage.UserRepository;
+import com.opencondo.accountservice.security.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
- * Put a description of the class here.
+ * Spring Boot Application class, with a main method to start the embedded server.
  *
- * @author: Olavo Holanda
+ * @author Olavo Holanda
+ * @version 0.1
+ * @since 0.1
  */
 @SpringBootApplication
 public class AccountserviceApplication {
 
-	@Autowired
-	UserRepository repository;
+  /**
+   * Starts this project with an embedded server.
+   */
+  public static void main(String[] args) {
+    SpringApplication.run(AccountserviceApplication.class, args);
+  }
 
-	public static void main(String[] args) {
-		SpringApplication.run(AccountserviceApplication.class, args);
-	}
-
-	@Autowired
-	public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository repo) throws Exception {
-		builder.userDetailsService(s -> (new CustomUserDetails(repo.findByUsername(s))));
-	}
+  @Autowired
+  public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository repo)
+      throws Exception {
+    builder.userDetailsService(s -> (new CustomUserDetails(repo.findByUsername(s))));
+  }
 }
