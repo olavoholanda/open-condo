@@ -2,7 +2,6 @@ package com.opencondo.forumservice.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import java.util.Arrays;
 import java.util.Collections;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
