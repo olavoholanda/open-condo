@@ -9,7 +9,7 @@ package com.opencondo.accountservice.controller.dto;
  * @version 0.1
  * @since 0.1
  */
-public interface DTOMapper<E> {
+interface DTOMapper<E> {
 
   /**
    * Fills the DTO with information from the model.
@@ -23,5 +23,5 @@ public interface DTOMapper<E> {
    *
    * @return the entity parsed from this DTO.
    */
-  E buildFromEntity();
+  E createEntity();
 }

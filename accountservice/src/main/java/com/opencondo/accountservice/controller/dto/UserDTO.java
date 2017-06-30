@@ -47,7 +47,7 @@ public class UserDTO implements DTOMapper<User> {
    * @return the user parsed from this DTO.
    */
   @Override
-  public User buildFromEntity() {
+  public User createEntity() {
     User user = new User();
     user.setId(this.id);
     user.setAddress(this.address);
