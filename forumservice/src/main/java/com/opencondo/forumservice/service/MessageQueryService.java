@@ -5,7 +5,7 @@ import com.opencondo.forumservice.domain.repository.MessageRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 /**
@@ -40,6 +40,6 @@ public class MessageQueryService {
    */
   public List<Message> getLastMessagesByTopicId(Long topicId, Integer page, Integer size) {
     return repository.
-        findByTopicId(topicId, PageRequest.of(page, size, Sort.Direction.ASC, "createTime"));
+        findByTopicId(topicId, PageRequest.of(page, size, Direction.DESC, "createTime"));
   }
 }

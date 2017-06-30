@@ -50,7 +50,7 @@ public class MessageController {
   public MessageDTO createMessage(@PathVariable("topicId") Long topicId,
       @RequestBody MessageDTO dto) {
     Message message = this.service
-        .createMessage(dto.getMessage(), topicId, dto.getAuthor().getId());
+        .createMessage(dto.getMessage(), topicId, dto.getAuthor().getUsername());
     return this.parseMessage(message);
   }
 

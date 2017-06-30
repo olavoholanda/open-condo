@@ -41,7 +41,7 @@ public class TopicController {
   @RequestMapping(method = RequestMethod.POST)
   public TopicDTO createTopic(@RequestBody TopicDTO dto) {
     Topic topic = this.service
-        .createTopic(dto.getTitle(), dto.getAuthor().getId(), dto.getCondoId());
+        .createTopic(dto.getTitle(), dto.getAuthor().getUsername(), dto.getCondoId());
     return this.parseTopic(topic);
   }
 

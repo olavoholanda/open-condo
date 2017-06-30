@@ -43,14 +43,14 @@ public class MessageService {
    * Creates a new <code>Message</code> based on the content, topic and author. The message
    * create time will be the moment that the object is created.
    *
-   * @param messageContent the <code>String</code> with message's content
-   * @param topicId the <code>Long</code> id of the topic
-   * @param userExternalId the <code>String</code> external id of the author
+   * @param messageContent the <code>String</code> with message's content.
+   * @param topicId the <code>Long</code> id of the topic.
+   * @param username the <code>String</code> username of the author.
    * @return a new, persisted, message
    */
-  public Message createMessage(String messageContent, Long topicId, String userExternalId) {
+  public Message createMessage(String messageContent, Long topicId, String username) {
 
-    UserAccount author = accountQueryService.getUserByUsername(userExternalId);
+    UserAccount author = accountQueryService.getUserByUsername(username);
     Topic topic = topicService.retrieveTopic(topicId);
 
     Message message = new Message(messageContent, new Date(), topic, author);

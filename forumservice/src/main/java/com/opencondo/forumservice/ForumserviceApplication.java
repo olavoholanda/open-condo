@@ -13,10 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ForumserviceApplication {
 
-	/**
-	 * Starts this project with an embedded server.
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(ForumserviceApplication.class, args);
-	}
+  /**
+   * Starts this project with an embedded server.
+   */
+  public static void main(String[] args) {
+    SpringApplication.run(ForumserviceApplication.class, args);
+  }
 }

@@ -40,12 +40,12 @@ public class TopicService {
    * is created with open status as true.
    *
    * @param title the <code>String</code> with topic's title.
-   * @param userExternalId the <code>String</code> external id of the author.
+   * @param username the <code>String</code> username of the author.
    * @param condoId the <code>String</code> condo id of the topic.
    * @return a new, persisted, topic.
    */
-  public Topic createTopic(String title, String userExternalId, String condoId) {
-    UserAccount author = accountQueryService.getUserByUsername(userExternalId);
+  public Topic createTopic(String title, String username, String condoId) {
+    UserAccount author = accountQueryService.getUserByUsername(username);
 
     Topic topic = new Topic(title, new Date(), author, condoId);
     return repository.save(topic);
