@@ -2,6 +2,7 @@ package com.opencondo.forumservice.domain.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.opencondo.forumservice.ForumserviceApplication;
 import com.opencondo.forumservice.domain.model.Message;
 import com.opencondo.forumservice.domain.model.Topic;
 import com.opencondo.forumservice.domain.model.UserAccount;
@@ -15,7 +16,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * <code>MessageRepository</code> test class. The only test here is for
@@ -30,7 +34,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @version 0.1
  * @since 0.1
  */
-@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
 @Transactional
 public class MessageRepositoryTest {

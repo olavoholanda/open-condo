@@ -1,5 +1,6 @@
 package com.opencondo.forumservice.domain.repository;
 
+import com.opencondo.forumservice.ForumserviceApplication;
 import com.opencondo.forumservice.domain.model.UserAccount;
 import javax.transaction.Transactional;
 import org.junit.Test;
@@ -7,7 +8,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -24,7 +28,7 @@ import static org.assertj.core.api.Assertions.*;
  * @version 0.1
  * @since 0.1
  */
-@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
 @Transactional
 public class UserAccountRepositoryTest {
