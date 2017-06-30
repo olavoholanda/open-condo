@@ -74,13 +74,13 @@ public interface UserService {
    * @return the updated User.
    * @throws EntityNotFoundException if the user was not found.
    */
-  User updateUser(User user) throws Exception;
+  User updateUser(User user) throws EntityNotFoundException;
 
   /**
-   * Deletes an user with the specified id.
+   * Deletes an user with the specified username.
    *
-   * @param id the user Long id.
+   * @param username the user String username.
    * @throws EntityNotFoundException if the user was not found.
    */
-  void deleteUser(Long id) throws EntityNotFoundException;
+  void deleteUser(String username) throws EntityNotFoundException;
 }

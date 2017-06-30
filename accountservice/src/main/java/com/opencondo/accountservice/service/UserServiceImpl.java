@@ -135,14 +135,14 @@ public class UserServiceImpl implements UserService {
   }
 
   /**
-   * Deletes an user with the specified id.
+   * Deletes an user with the specified username.
    *
-   * @param id the user Long id.
+   * @param username the user String username.
    * @throws EntityNotFoundException if the user was not found.
    */
   @Override
-  public void deleteUser(Long id) throws EntityNotFoundException {
-    Optional<User> optional = repository.findById(id);
+  public void deleteUser(String username) throws EntityNotFoundException {
+    Optional<User> optional = query.getUserByUsername(username);
     if(optional.isPresent()){
       User user =  optional.get();
       repository.delete(user);
