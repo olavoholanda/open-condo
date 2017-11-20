@@ -4,6 +4,7 @@ import com.opencondo.accountservice.domain.model.User;
 import com.opencondo.accountservice.domain.storage.UserRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * User service concrete class that implements
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @version 0.1
  * @since 0.1
  */
+@Service
 public class UserQueryServiceImpl implements UserQueryService {
 
   private final UserRepository repository;

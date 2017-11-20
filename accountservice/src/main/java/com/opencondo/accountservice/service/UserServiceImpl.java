@@ -6,9 +6,11 @@ import com.opencondo.accountservice.domain.storage.UserRepository;
 import com.opencondo.accountservice.service.exception.EntityNotFoundException;
 import com.opencondo.accountservice.service.exception.InvalidInputException;
 import com.opencondo.accountservice.utils.Cryptography;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.Date;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * User service concrete class that implements
@@ -18,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @version 0.1
  * @since 0.1
  */
+@Service
 public class UserServiceImpl implements UserService {
 
   private final UserRepository repository;

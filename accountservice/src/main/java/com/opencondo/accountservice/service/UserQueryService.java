@@ -2,9 +2,8 @@ package com.opencondo.accountservice.service;
 
 
 import com.opencondo.accountservice.domain.model.User;
-import java.util.List;
+
 import java.util.Optional;
-import org.springframework.stereotype.Service;
 
 /**
  * User service interface for queries regarding the user resource.
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
  * @version 0.1
  * @since 0.1
  */
-@Service
 public interface UserQueryService {
 
   /**

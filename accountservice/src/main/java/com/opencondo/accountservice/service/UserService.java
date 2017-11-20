@@ -4,7 +4,6 @@ package com.opencondo.accountservice.service;
 import com.opencondo.accountservice.domain.model.User;
 import com.opencondo.accountservice.service.exception.EntityNotFoundException;
 import com.opencondo.accountservice.service.exception.InvalidInputException;
-import org.springframework.stereotype.Service;
 
 /**
  * User service interface for CRUD operations regarding the user resource.
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
  * @version 0.1
  * @since 0.1
  */
-@Service
 public interface UserService {
 
   /**
