@@ -1,11 +1,11 @@
 package com.opencondo.accountservice.domain.model;
 
-import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * Represents an unique user in the system.
@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 public class User {
 
     @Id
-    private Long id;
+    private String id;
 
     @NotNull(message = "Name can not be null")
     private String name;
