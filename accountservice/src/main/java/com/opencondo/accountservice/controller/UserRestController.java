@@ -9,9 +9,7 @@ import com.opencondo.accountservice.service.exception.InvalidInputException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
@@ -48,7 +46,7 @@ public class UserRestController implements UserController {
    */
   @Override
   @RequestMapping(value = "/admin", method = RequestMethod.POST)
-  public UserDTO createAdminUser(UserDTO dto) {
+  public UserDTO createAdminUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
 
     try {
@@ -70,7 +68,7 @@ public class UserRestController implements UserController {
    */
   @Override
   @RequestMapping(method = RequestMethod.POST)
-  public UserDTO createResidentUser(UserDTO dto) {
+  public UserDTO createResidentUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
 
     try {
@@ -92,7 +90,7 @@ public class UserRestController implements UserController {
    */
   @Override
   @RequestMapping(value = "/manager", method = RequestMethod.POST)
-  public UserDTO createManagerUser(UserDTO dto) {
+  public UserDTO createManagerUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
 
     try {
@@ -114,7 +112,7 @@ public class UserRestController implements UserController {
    */
   @Override
   @RequestMapping(value = "/doorman", method = RequestMethod.POST)
-  public UserDTO createDoormanUser(UserDTO dto) {
+  public UserDTO createDoormanUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
 
     try {
@@ -135,7 +133,7 @@ public class UserRestController implements UserController {
    */
   @Override
   @RequestMapping(path = "/{username}", method = RequestMethod.GET)
-  public UserDTO getUser(String username) {
+  public UserDTO getUser(@PathVariable("username") String username) {
     UserDTO resultDTO = new UserDTO();
     Optional<User> optional = queryService.getUserByUsername(username);
 
@@ -155,7 +153,7 @@ public class UserRestController implements UserController {
    */
   @Override
   @RequestMapping(path = "/{username}", method = RequestMethod.DELETE)
-  public void deleteUser(String username) {
+  public void deleteUser(@PathVariable("username") String username) {
     try {
       service.deleteUser(username);
     } catch (EntityNotFoundException e) {
@@ -172,7 +170,7 @@ public class UserRestController implements UserController {
    */
   @Override
   @RequestMapping(method = RequestMethod.PUT)
-  public UserDTO updateUser(UserDTO dto) {
+  public UserDTO updateUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
     try {
       User user = service.updateUser(dto.createEntity());
