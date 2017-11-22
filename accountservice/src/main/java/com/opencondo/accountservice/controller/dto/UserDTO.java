@@ -3,6 +3,7 @@ package com.opencondo.accountservice.controller.dto;
 import com.opencondo.accountservice.domain.model.Role;
 import com.opencondo.accountservice.domain.model.User;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Data Transfer Object for the User Entity.
@@ -12,9 +13,10 @@ import lombok.Getter;
  * @since 0.1
  */
 @Getter
+@Setter
 public class UserDTO implements DTOMapper<User> {
 
-  private Long id;
+  private String id;
   private String name;
   private String email;
   private String username;
@@ -52,12 +54,16 @@ public class UserDTO implements DTOMapper<User> {
     user.setId(this.id);
     user.setAddress(this.address);
     user.setEmail(this.email);
+      System.out.println(this.name);
     user.setName(this.name);
-    user.setRole(Role.valueOf(this.role));
     user.setPassword(this.password);
     user.setEnable(this.enable);
     user.setCondoId(this.condoId);
     user.setUsername(this.username);
+
+    if(this.role != null) {
+      user.setRole(Role.valueOf(this.role));
+    }
 
     return user;
   }
