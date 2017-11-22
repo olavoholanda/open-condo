@@ -35,7 +35,7 @@ public class UserQueryServiceImpl implements UserQueryService {
    */
   @Override
   public Optional<User> getUserByUsername(String username) {
-    return Optional.of(repository.findByUsername(username));
+    return Optional.ofNullable(repository.findByUsername(username));
   }
 
   /**
@@ -46,6 +46,6 @@ public class UserQueryServiceImpl implements UserQueryService {
    */
   @Override
   public Optional<User> getUserByEmail(String email) {
-    return Optional.of(repository.findByEmail(email));
+    return Optional.ofNullable(repository.findByEmail(email));
   }
 }

@@ -119,12 +119,12 @@ public class UserServiceImpl implements UserService {
   @Override
   public User updateUser(User user) throws EntityNotFoundException {
     //TODO: validates inputs
-    Long id = user.getId();
+    String id = user.getId();
     String name = user.getName();
     String email = user.getEmail();
     String address = user.getAddress();
 
-    Optional<User> optional = repository.findById(id);
+    Optional<User> optional = Optional.ofNullable(repository.findByUsername(user.getUsername()));
     if(optional.isPresent()){
       user =  optional.get();
       user.setName(name);
@@ -172,10 +172,6 @@ public class UserServiceImpl implements UserService {
 
     if (user.getPassword() == null) {
       throw new InvalidInputException("Missing value for property 'password'.");
-    }
-
-    if (user.getCondoId() == null) {
-      throw new InvalidInputException("Missing value for property 'condoId'.");
     }
   }
 
