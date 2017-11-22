@@ -1,9 +1,11 @@
 package com.opencondo.accountservice.security;
 
 import com.opencondo.accountservice.domain.model.User;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
