@@ -54,7 +54,6 @@ public class UserDTO implements DTOMapper<User> {
     user.setId(this.id);
     user.setAddress(this.address);
     user.setEmail(this.email);
-      System.out.println(this.name);
     user.setName(this.name);
     user.setPassword(this.password);
     user.setEnable(this.enable);

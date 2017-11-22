@@ -27,11 +27,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (name.contains("@"))
             user = userRepository.findByEmail(name);
         else {
-            System.out.println(name);
             user = userRepository.findByUsername(name);
-            System.out.println("found user: " + user.getId());
         }
-
 
         if (user == null)
             throw new UsernameNotFoundException("Incorrect username, password or admin id.");
