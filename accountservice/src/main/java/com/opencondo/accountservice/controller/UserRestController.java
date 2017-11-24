@@ -9,7 +9,12 @@ import com.opencondo.accountservice.service.exception.InvalidInputException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
@@ -22,7 +27,7 @@ import org.springframework.web.client.HttpServerErrorException;
  */
 @RestController
 @RequestMapping("/api/user")
-public class UserRestController implements UserController {
+public class UserRestController {
 
   private final UserService service;
   private final UserQueryService queryService;
@@ -44,7 +49,7 @@ public class UserRestController implements UserController {
    * ignored.
    * @return a new persisted UserDTO.
    */
-  @Override
+//  @Override
   @RequestMapping(value = "/admin", method = RequestMethod.POST)
   public UserDTO createAdminUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
@@ -66,7 +71,7 @@ public class UserRestController implements UserController {
    * password, condoId. Optional: address and email. Id and Role if have values will be ignored.
    * @return a new persisted UserDTO.
    */
-  @Override
+//  @Override
   @RequestMapping(method = RequestMethod.POST)
   public UserDTO createResidentUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
@@ -88,7 +93,7 @@ public class UserRestController implements UserController {
    * password, condoId. Optional: address and email. Id and Role if have values will be ignored.
    * @return a new persisted UserDTO.
    */
-  @Override
+//  @Override
   @RequestMapping(value = "/manager", method = RequestMethod.POST)
   public UserDTO createManagerUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
@@ -110,7 +115,7 @@ public class UserRestController implements UserController {
    * password, condoId. Optional: address and email. Id and Role if have values will be ignored.
    * @return a new persisted UserDTO.
    */
-  @Override
+//  @Override
   @RequestMapping(value = "/doorman", method = RequestMethod.POST)
   public UserDTO createDoormanUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
@@ -131,19 +136,19 @@ public class UserRestController implements UserController {
    * @param username the String username.
    * @return the desired UserDTO.
    */
-  @Override
+//  @Override
   @RequestMapping(path = "/{username}", method = RequestMethod.GET)
-  public UserDTO getUser(@PathVariable("username") String username) {
+  public ResponseEntity<UserDTO> getUser(@PathVariable("username") String username) {
     UserDTO resultDTO = new UserDTO();
     Optional<User> optional = queryService.getUserByUsername(username);
 
     if (optional.isPresent()) {
       resultDTO.buildFromEntity(optional.get());
     } else {
-      throw new HttpServerErrorException(HttpStatus.NOT_FOUND, "User not found.");
+      return ResponseEntity.notFound().build();
     }
 
-    return resultDTO;
+    return ResponseEntity.ok(resultDTO);
   }
 
   /**
@@ -151,13 +156,14 @@ public class UserRestController implements UserController {
    *
    * @param username the String username.
    */
-  @Override
+//  @Override
   @RequestMapping(path = "/{username}", method = RequestMethod.DELETE)
-  public void deleteUser(@PathVariable("username") String username) {
+  public ResponseEntity deleteUser(@PathVariable("username") String username) {
     try {
       service.deleteUser(username);
+      return ResponseEntity.ok().build();
     } catch (EntityNotFoundException e) {
-      throw new HttpServerErrorException(HttpStatus.NOT_FOUND, e.getMessage());
+      return ResponseEntity.notFound().build();
     }
   }
 
@@ -168,7 +174,7 @@ public class UserRestController implements UserController {
    * email.
    * @return the UserDTO updated.
    */
-  @Override
+//  @Override
   @RequestMapping(method = RequestMethod.PUT)
   public UserDTO updateUser(@RequestBody UserDTO dto) {
     UserDTO resultDTO = new UserDTO();
