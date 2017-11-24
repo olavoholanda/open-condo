@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public User retrieveUser(Long id) throws EntityNotFoundException {
     Optional<User> optional = repository.findById(id);
-    if(optional.isPresent()){
+    if (optional.isPresent()) {
       return optional.get();
     }
     throw new EntityNotFoundException("User not found.");
@@ -119,14 +119,14 @@ public class UserServiceImpl implements UserService {
   @Override
   public User updateUser(User user) throws EntityNotFoundException {
     //TODO: validates inputs
-    String id = user.getId();
     String name = user.getName();
     String email = user.getEmail();
     String address = user.getAddress();
 
+    System.out.println(name);
     Optional<User> optional = Optional.ofNullable(repository.findByUsername(user.getUsername()));
-    if(optional.isPresent()){
-      user =  optional.get();
+    if (optional.isPresent()) {
+      user = optional.get();
       user.setName(name);
       user.setEmail(email);
       user.setAddress(address);
@@ -146,12 +146,13 @@ public class UserServiceImpl implements UserService {
   @Override
   public void deleteUser(String username) throws EntityNotFoundException {
     Optional<User> optional = query.getUserByUsername(username);
-    if(optional.isPresent()){
-      User user =  optional.get();
+    if (optional.isPresent()) {
+      User user = optional.get();
       repository.delete(user);
-    }
 
-    throw new EntityNotFoundException("User not found.");
+    } else {
+      throw new EntityNotFoundException("User not found.");
+    }
   }
 
   /**
