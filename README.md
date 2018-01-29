@@ -1,5 +1,7 @@
 # OpenCondo - Open Source Social Condominium
 
+[![CircleCI](https://circleci.com/gh/olavoholanda/open-condo.svg?style=shield)](https://circleci.com/gh/olavoholanda/open-condo)
+
 OpenCondo is an open source Java Rest API for social interaction among condominium communities.
 Currently, this project is under development and there is no stable version yet. Therefore, there isn't a demo
 application for this project.
