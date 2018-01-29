@@ -2,7 +2,6 @@ package com.opencondo.forumservice.domain.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.opencondo.forumservice.ForumserviceApplication;
 import com.opencondo.forumservice.domain.model.Message;
 import com.opencondo.forumservice.domain.model.Topic;
 import com.opencondo.forumservice.domain.model.UserAccount;
@@ -16,10 +15,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * <code>MessageRepository</code> test class. The only test here is for
@@ -62,13 +58,17 @@ public class MessageRepositoryTest {
     this.entityManager.flush();
 
     //persists 3 messages, from the oldest to the newest
-    this.entityManager.persist(new Message("message content 1", new Date(1497069005256L), topic, author));
-    this.entityManager.persist(new Message("message content 2", new Date(1497569005256L), topic, author));
-    this.entityManager.persist(new Message("message content 3", new Date(1497969005256L), topic, author));
+    this.entityManager
+        .persist(new Message("message content 1", new Date(1497069005256L), topic, author));
+    this.entityManager
+        .persist(new Message("message content 2", new Date(1497569005256L), topic, author));
+    this.entityManager
+        .persist(new Message("message content 3", new Date(1497969005256L), topic, author));
     this.entityManager.flush();
 
     //gets the messages in order by creation time
-    List<Message> messages = this.repository.findByTopicId(topic.getId(), PageRequest.of(0,10, Sort.Direction.ASC,"createTime"));
+    List<Message> messages = this.repository
+        .findByTopicId(topic.getId(), new PageRequest(0, 10, Sort.Direction.ASC, "createTime"));
 
     //asserts
     assertThat(messages.get(0).getMessage()).isEqualTo("message content 1");

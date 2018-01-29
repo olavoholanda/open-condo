@@ -40,6 +40,6 @@ public class MessageQueryService {
    */
   public List<Message> getLastMessagesByTopicId(Long topicId, Integer page, Integer size) {
     return repository.
-        findByTopicId(topicId, PageRequest.of(page, size, Direction.DESC, "createTime"));
+        findByTopicId(topicId, new PageRequest(page, size, Direction.DESC, "createTime"));
   }
 }

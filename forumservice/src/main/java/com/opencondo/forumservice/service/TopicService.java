@@ -57,10 +57,9 @@ public class TopicService {
    * @param id the topic <code>Long</code> id.
    * @return the desired topic.
    */
+  //TODO: throw new exception for not found and remove this null
   public Topic retrieveTopic(Long id) {
-    Optional<Topic> optionalTopic = repository.findById(id);
-    //TODO: throw new exception for not found and remove this null
-    return optionalTopic.orElse(null);
+    return repository.findOne(id);
   }
 
   /**

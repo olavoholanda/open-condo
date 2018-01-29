@@ -1,19 +1,10 @@
 package com.opencondo.forumservice.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.BDDMockito.given;
-
 import com.opencondo.forumservice.ForumserviceApplication;
-import com.opencondo.forumservice.domain.model.UserAccount;
-import com.opencondo.forumservice.domain.repository.UserAccountRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
@@ -29,7 +20,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @ContextConfiguration(classes = ForumserviceApplication.class)
 public class UserAccountQueryServiceTest {
 
-//  @MockBean
+  //  @MockBean
 //  private UserAccountRepository repository;
 //
 //  @Autowired

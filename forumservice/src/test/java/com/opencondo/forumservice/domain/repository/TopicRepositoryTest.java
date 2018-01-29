@@ -2,7 +2,6 @@ package com.opencondo.forumservice.domain.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.opencondo.forumservice.ForumserviceApplication;
 import com.opencondo.forumservice.domain.model.Topic;
 import com.opencondo.forumservice.domain.model.UserAccount;
 import java.util.Date;
@@ -14,12 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * <code>TopicRepository</code> test class. The only test here is for
@@ -62,8 +57,8 @@ public class TopicRepositoryTest {
     this.entityManager.flush();
 
     //gets the topics in order by creation time
-    List<Topic> topics = this.repository.findByCondoId(condoId, PageRequest
-        .of(0,10, Direction.DESC,"createTime"));
+    List<Topic> topics = this.repository.findByCondoId(condoId, new PageRequest
+        (0,10, Direction.DESC,"createTime"));
 
     //asserts
     assertThat(topics.get(0).getTitle()).isEqualTo("post title 3");

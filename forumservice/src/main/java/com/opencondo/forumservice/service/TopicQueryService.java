@@ -40,6 +40,6 @@ public class TopicQueryService {
    */
   public List<Topic> getLastTopicsByCondoId(String condoId, Integer page, Integer size) {
     return repository.
-        findByCondoId(condoId, PageRequest.of(page, size, Sort.Direction.ASC, "createTime"));
+        findByCondoId(condoId, new PageRequest(page, size, Sort.Direction.ASC, "createTime"));
   }
 }

@@ -23,7 +23,7 @@ public class CORSConfig {
    * @return a new first priority filter with CORS enabled.
    */
   @Bean
-  public FilterRegistrationBean corsFilter() {
+  public CorsFilter corsFilter() {
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     CorsConfiguration config = new CorsConfiguration();
     config.setAllowCredentials(Boolean.TRUE);
@@ -31,8 +31,6 @@ public class CORSConfig {
     config.addAllowedHeader("*");
     config.addAllowedMethod("*");
     source.registerCorsConfiguration("/**", config);
-    FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-    bean.setOrder(0);
-    return bean;
+    return new CorsFilter(source);
   }
 }

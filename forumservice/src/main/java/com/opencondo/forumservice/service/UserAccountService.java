@@ -51,10 +51,9 @@ public class UserAccountService {
    * @param id the user account <code>Long</code> id.
    * @return the desired user account.
    */
+  //TODO: throw new exception for not found and remove this null
   UserAccount retrieveUser(Long id) {
-    Optional<UserAccount> optionalTopic = repository.findById(id);
-    //TODO: throw new exception for not found and remove this null
-    return optionalTopic.orElse(null);
+    return repository.findOne(id);
   }
 
   /**

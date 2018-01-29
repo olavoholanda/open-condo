@@ -63,10 +63,9 @@ public class MessageService {
    * @param id the message <code>Long</code> id
    * @return the desired message
    */
+  //TODO: throw new exception for not found and remove this null
   public Message retrieveMessage(Long id) {
-    Optional<Message> optionalMessage = repository.findById(id);
-    //TODO: throw new exception for not found and remove this null
-    return optionalMessage.orElse(null);
+    return repository.findOne(id);
   }
 
   /**

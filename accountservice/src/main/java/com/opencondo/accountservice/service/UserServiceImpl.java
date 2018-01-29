@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService {
    */
   @Override
   public User retrieveUser(Long id) throws EntityNotFoundException {
-    Optional<User> optional = repository.findById(id);
+    Optional<User> optional = Optional.ofNullable(repository.findOne(id));
     if (optional.isPresent()) {
       return optional.get();
     }
